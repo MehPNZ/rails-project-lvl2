@@ -13,8 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
+        # with:
+        #   bundler-cache: true
 
       - name: Install dependencies
         run: cd collective_blog/ && make install
