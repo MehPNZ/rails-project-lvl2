@@ -19,10 +19,10 @@ jobs:
           ruby-version: 3.0.x
 
       - name: Install dependencies
-        run: ../collective_blog/make install
+        run: ./collective_blog/make install
 
       - name: Run Rubocop
-        run: ../collective_blog/make lint
+        run: ./collective_blog/make lint
       
       - name: Run Test
-        run: ../collective_blog/make test
+        run: ./collective_blog/make test
