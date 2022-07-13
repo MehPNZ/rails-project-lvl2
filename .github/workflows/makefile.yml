@@ -19,7 +19,7 @@ jobs:
           ruby-version: 3.0.x
 
       - name: Install dependencies
-        run: cd /rails-project-lvl2/collective_blog/ && make install
+        run: cd collective_blog/ && make install
 
       - name: Run Rubocop
         run: make lint
