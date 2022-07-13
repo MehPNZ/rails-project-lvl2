@@ -18,9 +18,6 @@ jobs:
         with:
           ruby-version: 3.0.x
 
-      - name: Install dependencies
-        run: cd collective_blog/ && make install
-
       - name: Run Rubocop
         run: cd collective_blog/ && make lint
       
