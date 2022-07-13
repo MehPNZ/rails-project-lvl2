@@ -13,16 +13,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Ruby 3.0
+      - name: Set up Ruby 3.0.2
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: 3.0.x
+          ruby-version: 3.0.2
 
       - name: Install dependencies
         run: cd collective_blog/ && make install
 
       - name: Run Rubocop
-        run: make lint
+        run: cd collective_blog/ && make lint
       
       - name: Run Test
-        run: make test
+        run: cd collective_blog/ && make test
