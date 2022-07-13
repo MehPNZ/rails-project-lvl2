@@ -12,6 +12,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+          cache: 'yarn'
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
 
       - name: Install dependencies
         run: cd collective_blog/ && make install
