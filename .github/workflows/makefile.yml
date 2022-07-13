@@ -13,10 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Ruby 3.0.2
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: 3.0.x
+      - name: Install dependencies
+        run: cd collective_blog/ && make install
 
       - name: Run Rubocop
         run: cd collective_blog/ && make lint
