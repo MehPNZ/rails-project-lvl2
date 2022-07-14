@@ -1,0 +1,12 @@
+.container.my-4
+  ol.breadcrumb
+    li.breadcrumb-item
+      = link_to t('post.all'), root_path
+    li.breadcrumb-item.active
+      = Category.category_find(@post.category_id)
+  .row.justify-content-center.mt-4
+    article.col-12
+      h1.mb-4.mb-lg-5 = @post.title
+      p = @post.body
+
+

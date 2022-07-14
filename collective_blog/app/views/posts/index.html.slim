@@ -1,0 +1,23 @@
+
+h1= t('title.title_main')
+
+tbody
+  - @posts.each do |post|
+    .row
+      .col-md-12
+        .card-body
+          h2.h5.card-title
+            = link_to post.title, post
+          .card-text.mb-2
+            = post.body
+          .text-right.small.text-muted.mt-auto
+            span.me-2 = t('post.like')
+            span.me-2 = post.created_at.strftime("%H:%M %d/%m/%Y")
+            span = User.user_email(post.user_id)
+
+ 
+/ td.d-flex
+/   .me-4 = link_to t('show'), post
+/   .me-4 = link_to t('edit'), edit_post_path(post)
+/   = link_to t('destroy'), post, data: { confirm: 'Are you sure?' }, method: :delete
+
