@@ -1,19 +1,26 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :posts do
+    scope module: 'posts' do
+      resources :comments, only: [:create]
+    end
+  end
+
   root 'posts#index'
   devise_for :users
-  resources :posts
-  #root 'home#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # resources :posts do
+  #   scope module: 'posts' do
+  #     resources :comments
+  #   end
+  # end
+
+  # resources :post_comments do
+  #   scope module: 'posts' do
+  #     resources :comments, shallow: true
+  #   end
+  # end
+
+
 end
-
-
-
-# resources :answers, only: [] do
-#   scope module: :answers do
-#     resources :comments
-#     resources :likes, only: %i[create destroy]
-#     resources :comments, only: %i[create update destroy]
-#   end
-# end

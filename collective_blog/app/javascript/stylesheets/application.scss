@@ -1,1 +1,9 @@
-@import "bootstrap"
+@import "bootstrap";
+
+.comment-form {
+  display: none;
+}
+
+.sub-comment {
+  padding-left: 20px;
+}

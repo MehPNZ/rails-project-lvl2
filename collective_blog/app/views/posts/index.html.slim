@@ -1,4 +1,3 @@
-
 h1= t('title.title_main')
 
 tbody
@@ -14,10 +13,3 @@ tbody
             span.me-2 = t('post.like')
             span.me-2 = post.created_at.strftime("%H:%M %d/%m/%Y")
             span = User.user_email(post.user_id)
-
- 
-/ td.d-flex
-/   .me-4 = link_to t('show'), post
-/   .me-4 = link_to t('edit'), edit_post_path(post)
-/   = link_to t('destroy'), post, data: { confirm: 'Are you sure?' }, method: :delete
-

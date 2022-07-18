@@ -1,10 +1,7 @@
-= content_for :title do
-  = t('edit')
+h1 Editing post
 
-== render 'form'
+== render "form"
 
-hr
-
-.d-flex
-  = link_to t('show'), @post, class: 'btn btn-outline-primary me-2'
-  = link_to t('back'), :back, class: 'btn btn-outline-primary'
+=> link_to "Show", @post
+'|
+=< link_to "Back", posts_path

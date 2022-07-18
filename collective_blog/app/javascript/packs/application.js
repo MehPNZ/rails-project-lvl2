@@ -11,8 +11,10 @@ import "channels"
 
 //import "bootstrap/dist/css/bootstrap.min.css"
 
+import '@popperjs/core'
 import "bootstrap" 
 import "../stylesheets/application"
+import "bootstrap/js/dist/collapse"
 
 
 Rails.start()

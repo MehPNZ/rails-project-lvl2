@@ -10,3 +10,16 @@
       p = @post.body
 
 
+  =render partial: 'post_comments/form', locals: {post: @post, parent: nil}
+  p
+  - if @post.user == current_user
+    => link_to "Edit", edit_post_path(@post), class: "btn btn-success"
+    |
+    =< link_to "Destroy", @post, class: "btn btn-danger", data: {confirm: "Are you sure?"}, method: :delete
+  |  
+  =< link_to "Back", posts_path, class: "btn btn-secondary"
+  p
+    .mt-4
+      strong Comments:
+
+      =render partial: @post.post_comments.where(parent_id: nil).includes(:user).order(id: :desc)
