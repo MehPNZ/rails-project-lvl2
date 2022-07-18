@@ -9,7 +9,18 @@
       h1.mb-4.mb-lg-5 = @post.title
       p = @post.body
 
-
+  | Like: 
+  = @post.post_likes.count
+  |  
+  - if current_user&.id != @post&.user_id
+    - like = current_user&.post_likes&.find_by(post: @post)
+    - if like.nil?
+      =link_to post_likes_path(@post), method: :post do
+        = image_tag asset_pack_path("media/images/like.svg"), width: 20, alt: "Like"
+    - else
+      =link_to like_path(like), method: :delete do
+        = image_tag asset_pack_path("media/images/unlike.svg"), width: 20, alt: "Unlike"
+  p
   =render partial: 'post_comments/form', locals: {post: @post, parent: nil}
   p
   - if @post.user == current_user

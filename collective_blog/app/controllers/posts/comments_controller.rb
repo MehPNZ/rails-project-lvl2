@@ -1,11 +1,14 @@
 class Posts::CommentsController < Posts::ApplicationController
+  before_action :authenticate_user!, only: %i[create]
 
   def create
-     @comment = current_user.post_comments.new(comment_params)
+     @comment = current_user&.post_comments&.new(comment_params)
      if @comment.save
+      flash[:success] = 'Comment created!'
       redirect_to post_path(params[:post_id], anchor: "comment-#{@comment.id}")
      else
-      flash[:notice] = @comment.errors.full_messages.to_sentence
+      flash[:alert] = @comment.errors.full_messages.to_sentence
+      redirect_to post_path(params[:post_id])
      end
   end
 
