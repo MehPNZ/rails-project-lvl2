@@ -89,7 +89,11 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.10.2)
+      devise (>= 4.8.0)
     erubi (1.10.0)
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -98,6 +102,8 @@ GEM
       hpricot
     i18n (1.11.0)
       concurrent-ruby (~> 1.0)
+    i18n-debug (1.2.0)
+      i18n (< 2)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -285,7 +291,10 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  devise-i18n
+  faker
   html2slim (~> 0.2.0)
+  i18n-debug
   jbuilder (~> 2.7)
   listen (~> 3.3)
   minitest-power_assert

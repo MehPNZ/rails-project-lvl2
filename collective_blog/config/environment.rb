@@ -5,7 +5,7 @@ require_relative 'application'
 require_relative 'rollbar'
 
 # Initialize the Rails application.
-#Rails.application.initialize!
+# Rails.application.initialize!
 
 # require_relative 'rollbar'
 

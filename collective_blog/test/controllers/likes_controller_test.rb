@@ -1,13 +1,31 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class LikesControllerTest < ActionDispatch::IntegrationTest
-  test "should get create" do
-    get likes_create_url
-    assert_response :success
+  include Devise::Test::IntegrationHelpers
+
+  setup do
+    @post = posts(:one)
+    @user = users(:one)
+    @like = post_likes(:one)
   end
 
-  test "should get destroy" do
-    get likes_destroy_url
-    assert_response :success
+  test 'test_create_like' do
+    sign_in @user
+    post post_likes_url(@post, locale: :en)
+    like = PostLike.find_by! post_id: @post[:id]
+
+    assert { like }
+    assert_redirected_to @like.post
+  end
+
+  test 'test_destroy_comment' do
+    sign_in @user
+    delete like_url(@like, locale: :en)
+
+    assert { !PostLike.exists? @like.id }
+
+    assert_redirected_to post_url(@post)
   end
 end

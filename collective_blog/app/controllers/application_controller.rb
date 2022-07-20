@@ -2,7 +2,7 @@
 
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
-  
+
   around_action :switch_locale
 
   def switch_locale(&action)

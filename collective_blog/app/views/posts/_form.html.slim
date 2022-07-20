@@ -3,10 +3,10 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :title
-    = f.input :body
-    = f.association :category
+    = f.input :title, label: t('post.title')
+    = f.input :body, label: t('post.body')
+    = f.association :category, label: t('post.category')
 
   .form-actions
     .mt-3
-      = f.button :submit, class: "btn btn-primary"
+      = f.button :submit, t('post.create'),class: "btn btn-primary"

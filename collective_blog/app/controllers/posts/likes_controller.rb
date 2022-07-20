@@ -1,15 +1,14 @@
+# frozen_string_literal: true
+
 class Posts::LikesController < Posts::ApplicationController
   before_action :authenticate_user!, only: %i[create destroy]
-  
+
   def create
-    @like = current_user.post_likes.new(likes_params)
-    respond_to do |format|
-      if @like.save
-        format.html { redirect_to @like.post}
-        format.json { render :show, status: :created, location: @like.post }
-      else
-       flash[:notice] = @like.errors.full_messages.to_sentence
-      end
+    @like = PostLike.new(likes_params)
+    if @like.save
+      redirect_to @like.post
+    else
+      flash[:notice] = @like.errors.full_messages.to_sentence
     end
   end
 
@@ -21,7 +20,8 @@ class Posts::LikesController < Posts::ApplicationController
   end
 
   private
+
   def likes_params
-    params.permit(:post_id)
+    params.permit(:post_id).merge(user_id: current_user.id)
   end
 end

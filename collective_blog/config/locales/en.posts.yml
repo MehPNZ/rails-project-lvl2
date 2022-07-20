@@ -1,0 +1,21 @@
+en:
+  post:
+    action_create: Post was successfully created!
+    action_update: Post was successfully updated!
+    action_destroy: Post was successfully destroyed!
+    all: All posts
+    body: Text
+    category: Category
+    create: Published
+    comment: Comment
+    destroy: Destroy
+    edit: Edit
+    like: 'Like: '
+    new: New post
+    reply: Reply
+    title: Title
+
+    comments_count:
+      zero: No comments
+      one: "%{count} comment"
+      other: "%{count} comments"

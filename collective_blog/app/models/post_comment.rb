@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class PostComment < ApplicationRecord
   belongs_to :post
   belongs_to :user
-  
-  has_many :post_comments, foreign_key: :parent_id
+  has_ancestry
 
   validates :content, presence: true
 end

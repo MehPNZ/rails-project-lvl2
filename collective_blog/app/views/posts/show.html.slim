@@ -3,13 +3,13 @@
     li.breadcrumb-item
       = link_to t('post.all'), root_path
     li.breadcrumb-item.active
-      = Category.category_find(@post.category_id)
+      = @post.category.name
   .row.justify-content-center.mt-4
     article.col-12
       h1.mb-4.mb-lg-5 = @post.title
       p = @post.body
 
-  | Like: 
+  =t('post.like') 
   = @post.post_likes.count
   |  
   - if current_user&.id != @post&.user_id
@@ -21,16 +21,20 @@
       =link_to like_path(like), method: :delete do
         = image_tag asset_pack_path("media/images/unlike.svg"), width: 20, alt: "Unlike"
   p
-  =render partial: 'post_comments/form', locals: {post: @post, parent: nil}
-  p
   - if @post.user == current_user
-    => link_to "Edit", edit_post_path(@post), class: "btn btn-success"
+    => link_to t('post.edit'), edit_post_path(@post), class: "btn btn-success"
     |
-    =< link_to "Destroy", @post, class: "btn btn-danger", data: {confirm: "Are you sure?"}, method: :delete
+    =< link_to t('post.destroy'), @post, class: "btn btn-danger", data: {confirm: "Are you sure?"}, method: :delete
   |  
-  =< link_to "Back", posts_path, class: "btn btn-secondary"
+  =< link_to t('back'), posts_path, class: "btn btn-secondary"
+
+  p
+  =render partial: 'posts/comments/form', locals: { url: post_comments_path(@post), comment: @comment, parent_id: nil}
+  
   p
     .mt-4
-      strong Comments:
-
-      =render partial: @post.post_comments.where(parent_id: nil).includes(:user).order(id: :desc)
+      
+      strong  =t('post.comments_count', count: @post.post_comments.count)
+      
+      =render partial: 'posts/comments/post_comment', collection: @post.post_comments.where(ancestry: nil).includes(:user).order(id: :desc)
+    
