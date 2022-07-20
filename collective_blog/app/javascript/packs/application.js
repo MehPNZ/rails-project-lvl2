@@ -9,7 +9,6 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-//import "bootstrap/dist/css/bootstrap.min.css"
 
 import '@popperjs/core'
 import "bootstrap" 
@@ -22,6 +21,3 @@ Turbolinks.start()
 ActiveStorage.start()
 
 const images = require.context('../images', true);
-
-// import "bootstrap" 
-// import "../stylesheets/application"
