@@ -2,6 +2,5 @@ h1 Editing post
 
 == render "form"
 
-=> link_to "Show", @post
-'|
-=< link_to "Back", posts_path
+.mt-3
+  = link_to t('back'), @post, class: 'btn btn-secondary'

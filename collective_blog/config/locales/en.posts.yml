@@ -14,6 +14,7 @@ en:
     new: New post
     reply: Reply
     title: Title
+    show: Show
 
     comments_count:
       zero: No comments
