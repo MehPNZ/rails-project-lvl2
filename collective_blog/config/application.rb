@@ -14,7 +14,7 @@ module CollectiveBlog
     config.load_defaults 6.1
 
     config.i18n.available_locales = %i[en ru]
-    config.i18n.default_locale = :en
+    config.i18n.default_locale = :ru
     # config.assets.initialize_on_precompile = false
 
     # Configuration for the application, engines, and railties goes here.
