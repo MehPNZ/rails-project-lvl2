@@ -22,5 +22,8 @@ jobs:
       - name: Run Rubocop
         run: cd collective_blog/ && make lint
       
+      - name: Webpack compilation
+        run: cd collective_blog/ && NODE_ENV=test bundle exec rails webpacker:compile
+      
       - name: Run Test
         run: cd collective_blog/ && make test
