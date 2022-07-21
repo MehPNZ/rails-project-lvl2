@@ -11,7 +11,7 @@
   =t('post.like')
   = @post.likes.count
   |
-  - if current_user&.id != @post&.creator_id
+  - if current_user&.id != @post&.creator.id
     - like = current_user&.likes&.find_by(post: @post.id)
     - if like.nil?
       =link_to post_likes_path(@post.id), method: :post do
@@ -20,7 +20,7 @@
       =link_to post_like_path(@post.id, like.id), method: :delete do
         = image_tag asset_pack_path('media/images/unlike.svg'), width: 20, alt: 'Unlike'
   p
-  - if @post.creator_id == current_user.id
+  - if @post&.creator.id == current_user&.id
     => link_to t('post.edit'), edit_post_path(@post), class: 'btn btn-success'
     |
     =< link_to t('post.destroy'), @post, class: 'btn btn-danger', data: { confirm: 'Are you sure?' }, method: :delete
