@@ -22,7 +22,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
   test 'test_destroy_comment' do
     sign_in @user
-    delete like_url(@like, locale: :en)
+    delete post_like_url(@post, @like, locale: :en)
 
     assert { !PostLike.exists? @like.id }
 
