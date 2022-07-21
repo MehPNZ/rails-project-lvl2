@@ -9,9 +9,9 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params_create)
     if @comment.save
       flash[:success] = t('comment.create')
-      redirect_to post_path(params[:post_id], anchor: "comment-#{@comment.id}")
+      redirect_to post_path(@post, anchor: "comment-#{@comment.id}")
     else
-      redirect_to post_path(params[:post_id]), alert: @comment.errors.full_messages.to_sentence
+      redirect_to post_path(@post), alert: @comment.errors.full_messages.to_sentence
     end
   end
 
