@@ -1,4 +1,4 @@
-h1= t('title.title_main')
+h1 = t('title.title_main')
 
 tbody
   - @posts.each do |post|
@@ -10,5 +10,5 @@ tbody
           .text-right.small.text-muted.mt-auto
             span.me-2 = t('post.like')
             span.me-2 = post.likes.count
-            span.me-2 = post.created_at.strftime("%H:%M %d/%m/%Y")
+            span.me-2 = post.created_at.strftime('%H:%M %d/%m/%Y')
             span = User.find_by(id: post.creator_id).email

@@ -8,33 +8,27 @@
     article.col-12
       h1.mb-4.mb-lg-5 = @post.title
       p = @post.body
-
-  =t('post.like') 
+  =t('post.like')
   = @post.likes.count
-  |  
+  |
   - if current_user&.id != @post&.creator_id
     - like = current_user&.likes&.find_by(post: @post.id)
     - if like.nil?
       =link_to post_likes_path(@post.id), method: :post do
-        = image_tag asset_pack_path("media/images/like.svg"), width: 20, alt: "Like"
+        = image_tag asset_pack_path('media/images/like.svg'), width: 20, alt: 'Like'
     - else
       =link_to post_like_path(@post.id, like.id), method: :delete do
-        = image_tag asset_pack_path("media/images/unlike.svg"), width: 20, alt: "Unlike"
+        = image_tag asset_pack_path('media/images/unlike.svg'), width: 20, alt: 'Unlike'
   p
-  - if @post.creator_id == current_user
-    => link_to t('post.edit'), edit_post_path(@post), class: "btn btn-success"
+  - if @post.creator_id == current_user.id
+    => link_to t('post.edit'), edit_post_path(@post), class: 'btn btn-success'
     |
-    =< link_to t('post.destroy'), @post, class: "btn btn-danger", data: {confirm: "Are you sure?"}, method: :delete
-  |  
-  =< link_to t('back'), posts_path, class: "btn btn-secondary"
-
+    =< link_to t('post.destroy'), @post, class: 'btn btn-danger', data: { confirm: 'Are you sure?' }, method: :delete
+  |
+  =< link_to t('back'), posts_path, class: 'btn btn-secondary'
   p
-  =render partial: 'posts/comments/form', locals: { url: post_comments_path(@post.id), comment: @comment, parent_id: nil}
-  
+  =render partial: 'posts/comments/form', locals: { url: post_comments_path(@post.id), comment: @comment, parent_id: nil }
   p
     .mt-4
-      
-      strong  =t('post.comments_count', count: @post.comments.count)
-      
+      strong = t('post.comments_count', count: @post.comments.count)
       =render partial: 'posts/comments/post_comment', collection: @post.comments.where(ancestry: nil).includes(:user).order(id: :desc)
-    
