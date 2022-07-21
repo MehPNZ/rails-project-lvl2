@@ -7,6 +7,7 @@ en:
     body: Text
     category: Category
     create: Published
+    creator: Author
     comment: Comment
     destroy: Destroy
     edit: Edit
@@ -15,6 +16,7 @@ en:
     reply: Reply
     title: Title
     show: Show
+
 
     comments_count:
       zero: No comments

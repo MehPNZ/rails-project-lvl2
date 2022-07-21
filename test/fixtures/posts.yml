@@ -3,6 +3,7 @@ one:
   id: '1'
   title: One
   body: One body
+  creator: One
   user_id: '1'
   category_id: '1'
 
@@ -10,5 +11,6 @@ two:
   id: '2'
   title: Two
   body: Two body
+  creator: Two
   user_id: '1'
   category_id: '1'

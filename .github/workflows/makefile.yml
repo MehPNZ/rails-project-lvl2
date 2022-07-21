@@ -17,13 +17,13 @@ jobs:
           bundler-cache: true
 
       - name: Install dependencies
-        run: cd collective_blog/ && make install
+        run: make install
 
       - name: Run Rubocop
-        run: cd collective_blog/ && make lint
+        run: make lint
       
       - name: Webpack compilation
-        run: cd collective_blog/ && NODE_ENV=test bundle exec rails webpacker:compile
+        run: NODE_ENV=test bundle exec rails webpacker:compile
       
       - name: Run Test
-        run: cd collective_blog/ && make test
+        run: make test
