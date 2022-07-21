@@ -37,8 +37,8 @@ Style/AsciiComments:
   Enabled: false
 
 Rails/FilePath:
-  Enabled: false
+  Enabled: true
 
 Lint/RescueException:
-  Enabled: false
+  Enabled: true
 
