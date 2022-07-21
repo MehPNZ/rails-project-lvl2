@@ -10,10 +10,10 @@
       p = @post.body
 
   =t('post.like') 
-  = @post.post_likes.count
+  = @post.likes.count
   |  
   - if current_user&.id != @post&.user_id
-    - like = current_user&.post_likes&.find_by(post: @post.id)
+    - like = current_user&.likes&.find_by(post: @post.id)
     - if like.nil?
       =link_to post_likes_path(@post.id), method: :post do
         = image_tag asset_pack_path("media/images/like.svg"), width: 20, alt: "Like"
@@ -34,7 +34,7 @@
   p
     .mt-4
       
-      strong  =t('post.comments_count', count: @post.post_comments.count)
+      strong  =t('post.comments_count', count: @post.comments.count)
       
-      =render partial: 'posts/comments/post_comment', collection: @post.post_comments.where(ancestry: nil).includes(:user).order(id: :desc)
+      =render partial: 'posts/comments/post_comment', collection: @post.comments.where(ancestry: nil).includes(:user).order(id: :desc)
     

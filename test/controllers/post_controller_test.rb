@@ -27,7 +27,7 @@ class PostControllerTest < ActionDispatch::IntegrationTest
     post = Post.find_by! title: @attrs[:title]
 
     assert { post }
-    assert_redirected_to post_url(post)
+    assert_redirected_to post_url(post, locale: :en)
   end
 
   test 'test_show' do
@@ -50,7 +50,7 @@ class PostControllerTest < ActionDispatch::IntegrationTest
   test 'test_update_post' do
     sign_in @user
     patch post_path(@post, locale: :en), params: { post: @attrs }
-    assert_redirected_to post_url(@post)
+    assert_redirected_to post_url(@post, locale: :en)
 
     @post.reload
 
@@ -63,6 +63,6 @@ class PostControllerTest < ActionDispatch::IntegrationTest
 
     assert { !Post.exists? @post.id }
 
-    assert_redirected_to posts_url
+    assert_redirected_to posts_url(locale: :en)
   end
 end

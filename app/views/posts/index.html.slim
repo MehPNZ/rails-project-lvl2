@@ -9,6 +9,6 @@ tbody
             = link_to post.title, post_path(post.id)
           .text-right.small.text-muted.mt-auto
             span.me-2 = t('post.like')
-            span.me-2 = post.post_likes.count
+            span.me-2 = post.likes.count
             span.me-2 = post.created_at.strftime("%H:%M %d/%m/%Y")
             span = post.creator

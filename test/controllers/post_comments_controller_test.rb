@@ -21,7 +21,7 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
     comment = PostComment.find_by! content: @attrs[:content]
 
     assert { comment }
-    assert_redirected_to post_url(@post, anchor: "comment-#{comment.id}")
+    assert_redirected_to post_url(@post, anchor: "comment-#{comment.id}", locale: :en)
   end
 
   test 'test_update_comment' do
@@ -40,6 +40,6 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
 
     assert { !PostComment.exists? @comment.id }
 
-    assert_redirected_to post_url(@post)
+    assert_redirected_to post_url(@post, locale: :en)
   end
 end

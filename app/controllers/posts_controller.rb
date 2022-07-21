@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comment = @post.post_comments.build
+    @comment = @post.comments.build
   end
 
   def new

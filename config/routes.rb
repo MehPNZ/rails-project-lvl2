@@ -3,15 +3,8 @@
 Rails.application.routes.draw do
   # scope '/(:locale)', locale: /en|ru/ do
   resources :posts do
-    scope module: 'posts' do
-      resources :comments, shallow: true
-    end
-  end
-
-  resources :posts do
-    scope module: 'posts' do
-      resources :likes, only: %i[create destroy]
-    end
+    resources :likes, only: %i[create destroy]
+    resources :comments, shallow: true
   end
 
   root 'posts#index'
