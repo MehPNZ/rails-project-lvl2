@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       flash[:success] = t('post.action_create')
-      redirect_to post_url(@post)
+      redirect_to @post
     else
       render :new, status: :unprocessable_entity
     end
