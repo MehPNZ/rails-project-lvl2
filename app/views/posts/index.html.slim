@@ -6,7 +6,7 @@ tbody
       .col-md-12
         .card-body
           h2.h5.card-title
-            = link_to post.title, post
+            = link_to post.title, post_path(post.id)
           .text-right.small.text-muted.mt-auto
             span.me-2 = t('post.like')
             span.me-2 = post.post_likes.count

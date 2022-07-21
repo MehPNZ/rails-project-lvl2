@@ -1,9 +1,9 @@
 install:
 	bundle install
 	yarn install
-
+	bundle exec rubocop
 lint:
-	rubocop
+	bundle exec rubocop
 
 test:
 	rake test

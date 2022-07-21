@@ -23,7 +23,7 @@
       = link_to t('post.reply'), "#PostComment#{post_comment.id}", data: {'bs-toggle': 'collapse', 'aria-controls': "PostComment#{post_comment.id}", 'aria-expanded': 'false', 'role': 'button'}  
       <div class = "collapse", id = "PostComment#{post_comment.id}">
         <div class="card card-body">
-          =render partial: 'posts/comments/form', locals: { parent_id: post_comment.id, comment: @comment, url: post_comments_path(@post)}
+          =render partial: 'posts/comments/form', locals: { parent_id: post_comment.id, comment: @comment, url: post_comments_path(@post.id)}
         </div>  
       </div>
 

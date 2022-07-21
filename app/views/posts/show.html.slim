@@ -13,12 +13,12 @@
   = @post.post_likes.count
   |  
   - if current_user&.id != @post&.user_id
-    - like = current_user&.post_likes&.find_by(post: @post)
+    - like = current_user&.post_likes&.find_by(post: @post.id)
     - if like.nil?
-      =link_to post_likes_path(@post), method: :post do
+      =link_to post_likes_path(@post.id), method: :post do
         = image_tag asset_pack_path("media/images/like.svg"), width: 20, alt: "Like"
     - else
-      =link_to like_path(like), method: :delete do
+      =link_to like_path(like.id), method: :delete do
         = image_tag asset_pack_path("media/images/unlike.svg"), width: 20, alt: "Unlike"
   p
   - if @post.user == current_user
@@ -29,7 +29,7 @@
   =< link_to t('back'), posts_path, class: "btn btn-secondary"
 
   p
-  =render partial: 'posts/comments/form', locals: { url: post_comments_path(@post), comment: @comment, parent_id: nil}
+  =render partial: 'posts/comments/form', locals: { url: post_comments_path(@post.id), comment: @comment, parent_id: nil}
   
   p
     .mt-4
