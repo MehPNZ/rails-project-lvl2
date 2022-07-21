@@ -11,7 +11,6 @@ class PostControllerTest < ActionDispatch::IntegrationTest
     @attrs = {
       title: Faker::Movies::HarryPotter.character,
       body: Faker::ChuckNorris.fact,
-      creator: Faker::Artist.name,
       category_id: 1
     }
   end
