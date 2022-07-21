@@ -1,6 +1,6 @@
 require:
-  - rubocop-performance
   - rubocop-rails
+  - rubocop-performance
 
 AllCops:
   NewCops: enable
@@ -35,10 +35,3 @@ Metrics/BlockLength:
 
 Style/AsciiComments:
   Enabled: false
-
-Rails/FilePath:
-  Enabled: true
-
-Lint/RescueException:
-  Enabled: true
-
