@@ -18,7 +18,7 @@
       =link_to post_likes_path(@post.id), method: :post do
         = image_tag asset_pack_path("media/images/like.svg"), width: 20, alt: "Like"
     - else
-      =link_to like_path(like.id), method: :delete do
+      =link_to post_like_path(@post.id, like.id), method: :delete do
         = image_tag asset_pack_path("media/images/unlike.svg"), width: 20, alt: "Unlike"
   p
   - if @post.user == current_user

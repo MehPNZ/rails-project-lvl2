@@ -41,6 +41,6 @@ class Posts::CommentsController < Posts::ApplicationController
   end
 
   def comment_params_create
-    params.require(:post_comment).permit(:content, :parent_id).merge(post_id: params[:post_id], user_id: current_user.id)
+    params.require(:post_comment).permit(:content, :parent_id, :post_id).merge(post_id: params[:post_id], user_id: current_user.id)
   end
 end

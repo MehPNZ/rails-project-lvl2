@@ -4,7 +4,7 @@ class Posts::LikesController < Posts::ApplicationController
   before_action :authenticate_user!, only: %i[create destroy]
 
   def create
-    @like = PostLike.new(likes_params)
+    @like = PostLike.new(post_id: params[:post_id], user_id: current_user.id)
     if @like.save
       redirect_to @like.post
     else
@@ -19,9 +19,9 @@ class Posts::LikesController < Posts::ApplicationController
     redirect_to post
   end
 
-  private
+  # private
 
-  def likes_params
-    params.permit(:post_id).merge(user_id: current_user.id)
-  end
+  # def likes_params
+  #   params.permit(:post_id).merge(user_id: current_user.id)
+  # end
 end
