@@ -11,7 +11,7 @@
   =t('post.like')
   = @post.post_likes_count
   |
-  - if current_user&.id != @post&.creator.id
+  - if current_user&.id != @post&.creator&.id
     - if @like.nil?
       =link_to post_likes_path(@post.id), method: :post do
         = image_tag asset_pack_path('media/images/like.svg'), width: 20, alt: 'Like'
