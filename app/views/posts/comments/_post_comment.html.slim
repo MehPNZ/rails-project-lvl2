@@ -2,8 +2,8 @@
   .card-header.small.mb-2.d-flex
     .card-body
       = post_comment.user.email
-      |
-      = post_comment.created_at.strftime('%H:%M %d/%m/%Y')
+      | 
+      p= post_comment.created_at.strftime('%H:%M, %d/%m/%Y')
   .card-body.d-flex
     .w-100
       .mb-3
