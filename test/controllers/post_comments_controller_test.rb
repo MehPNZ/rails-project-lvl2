@@ -23,23 +23,4 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
     assert { comment }
     assert_redirected_to post_url(@post, anchor: "comment-#{comment.id}", locale: :en)
   end
-
-  test 'test_update_comment' do
-    sign_in @user
-    patch comment_path(@comment, locale: :en), params: { post_comment: @attrs }
-    assert_redirected_to post_url(@comment.post_id, anchor: "comment-#{@comment.id}")
-
-    @comment.reload
-
-    assert { @comment.content == @attrs[:content] }
-  end
-
-  test 'test_destroy_comment' do
-    sign_in @user
-    delete comment_url(@comment, locale: :en)
-
-    assert { !PostComment.exists? @comment.id }
-
-    assert_redirected_to post_url(@post, locale: :en)
-  end
 end

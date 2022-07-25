@@ -1,7 +1,5 @@
-- if flash.any?
+ - if flash.any?
   .container.my-2
-    - flash.each do |key, value|
-      |  <div class="alert
-      = flash_class(key).to_s
-      | ">
-      = value
+    - flash.each do |_type, msg|
+      .alert.alert-info
+        = msg

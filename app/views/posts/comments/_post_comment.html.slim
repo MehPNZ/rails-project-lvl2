@@ -9,24 +9,6 @@
       .mb-3
         = post_comment.content
       |
-      - if current_user&.id == post_comment.user.id
-        => link_to t('post.edit'), "#PostCommentUpdate#{post_comment.id}",
-            data: { 'bs-toggle': 'collapse',
-            'aria-controls': "PostCommentUpdate#{post_comment.id}",
-            'aria-expanded': 'false', role: 'button' }
-        <div class = "collapse", id = "PostCommentUpdate#{post_comment.id}">
-          <div class="card card-body">
-            =render partial: 'posts/comments/form',
-            locals: { parent_id: post_comment.id,
-            comment: post_comment, url: comment_path(post_comment) }
-          </div>
-        </div>
-        '|
-        =< link_to t('post.destroy'),
-          comment_path(post_comment),
-          data: { confirm: 'Are you sure?' }, method: :delete
-        |
-        '|
       = link_to t('post.reply'), "#PostComment#{post_comment.id}",
         data: { 'bs-toggle': 'collapse',
         'aria-controls': "PostComment#{post_comment.id}",
